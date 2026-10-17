@@ -1,0 +1,1427 @@
+# 移动端开发大全集
+
+> 本文件由整理脚本合并生成；原始文件已完整保存在整理前备份中。
+
+
+---
+
+
+## 来源：`移动端/大全集.md`
+
+
+# 0. 总体路线图
+
+```
+共同基础底座
+  ↓
+前端路线 / 后端路线 / App路线
+  ↓
+调试、测试、性能、工程化、上线、监控
+  ↓
+架构、分布式、安全、源码阅读
+  ↓
+横向补语言：Go / Python / Java / Kotlin / Swift / Dart / C++ / Rust / C#
+```
+
+最重要的结论：
+
+- 想就业快：**前端 TypeScript + React/Vue + Java Spring Boot + SQL + Flutter**
+- 想后端强：**Java + Go + MySQL + Redis + Linux + 网络 + 分布式**
+- 想 App 强：**Kotlin Android + Swift iOS + Flutter**
+- 想长期精进：**数据结构、网络、操作系统、数据库、计算机系统、调试能力一定要补**
+
+---
+
+# 1. 共同基础底座书单
+
+## 1.1 编程入门
+
+|顺序|书籍|说明|
+|---|---|---|
+|1|《Python编程：从入门到实践》第3版|零基础入门，项目友好|
+|2|《C程序设计语言》|理解底层、内存、指针|
+|3|《程序设计实践》|编程风格、测试、调试、性能、工程实践|
+
+---
+
+## 1.2 Git、命令行、开发工具
+
+| 顺序  | 书籍                     |
+| --- | ---------------------- |
+| 1   | 《Pro Git》中文版           |
+| 2   | 《Git权威指南》              |
+| 3   | 《鸟哥的Linux私房菜：基础学习篇》    |
+| 4   | 《Linux命令行与Shell脚本编程大全》 |
+
+你必须会：
+
+- git clone / add / commit / branch / merge / rebase
+- git reset / revert / stash
+- git bisect 定位是哪次提交引入 Bug
+- Linux 文件、权限、进程、端口、日志查看
+
+---
+
+## 1.3 数学、逻辑、离散数学
+
+|顺序|书籍|作用|
+|---|---|---|
+|1|《程序员的数学》|二进制、逻辑、递归、排列组合|
+|2|《离散数学及其应用》|命题逻辑、集合、图、树、布尔代数|
+|3|《具体数学》|算法和复杂度进阶|
+
+---
+
+## 1.4 数据结构与算法
+
+|顺序|书籍|说明|
+|---|---|---|
+|1|《算法图解》|入门|
+|2|《大话数据结构》|中文友好|
+|3|《数据结构与算法分析：Java语言描述》|系统学习|
+|4|《算法》第4版|经典进阶|
+|5|《剑指Offer》|面试和实战题|
+|6|《算法导论》|高阶，后期读|
+
+必须掌握：
+
+- 数组、链表、栈、队列
+- 哈希表、堆、树、二叉搜索树、红黑树
+- 图、BFS、DFS、最短路径
+- 排序、查找、递归、动态规划
+- 时间复杂度、空间复杂度
+
+---
+
+## 1.5 逻辑电路、组成原理、计算机系统
+
+|顺序|书籍|
+|---|---|
+|1|《编码：隐匿在计算机软硬件背后的语言》第2版|
+|2|《计算机系统要素：从零开始构建现代计算机》|
+|3|《数字设计和计算机体系结构：RISC-V版》|
+|4|《计算机组成与设计：硬件/软件接口》|
+|5|《深入理解计算机系统》第3版|
+|6|《程序员的自我修养：链接、装载与库》|
+
+这一块解决：
+
+- CPU 是怎么执行程序的
+- 内存、缓存、寄存器是什么
+- 编译、链接、装载是怎么回事
+- 为什么会有栈溢出、内存泄漏、缓存命中率
+
+---
+
+## 1.6 操作系统
+
+| 顺序  | 书籍                 |
+| --- | ------------------ |
+| 1   | 《操作系统导论》           |
+| 2   | 《现代操作系统》           |
+| 3   | 《UNIX环境高级编程》       |
+| 4   | 《Linux/UNIX系统编程手册》 |
+
+必须会：
+
+- 进程、线程、协程
+- 锁、死锁、并发
+- 文件系统
+- 内存管理
+- IO、多路复用
+- Socket
+- Linux 排障命令
+
+---
+
+## 1.7 计算机网络
+
+|顺序|书籍|
+|---|---|
+|1|《图解HTTP》|
+|2|《HTTP权威指南》|
+|3|《计算机网络：自顶向下方法》第8版|
+|4|《TCP/IP详解 卷1》|
+|5|《Wireshark网络分析就这么简单》|
+
+必须会：
+
+- HTTP / HTTPS
+- DNS
+- TCP 三次握手、四次挥手
+- TCP 拥塞控制、重传、滑动窗口
+- WebSocket
+- CDN、缓存、代理
+- 抓包分析
+
+---
+
+## 1.8 数据库
+
+| 顺序  | 书籍            |
+| --- | ------------- |
+| 1   | 《SQL必知必会》     |
+| 2   | 《数据库系统概念》第7版  |
+| 3   | 《MySQL是怎样运行的》 |
+| 4   | 《高性能MySQL》第4版 |
+| 5   | 《Redis设计与实现》  |
+| 6   | 《数据密集型应用系统设计》 |
+
+必须会：
+
+- SQL 查询、JOIN、索引
+- 事务、隔离级别、锁
+- 慢 SQL 优化
+- MySQL 执行计划
+- Redis 缓存、过期、持久化
+- 分库分表、复制、分区、消息流
+
+---
+## 1.9 软件工程
+
+| 顺序  | 书籍                  |
+| --- | ------------------- |
+| 1   | 《代码整洁之道》            |
+| 2   | 《重构：改善既有代码的设计》第2版   |
+| 3   | 《设计模式：可复用面向对象软件的基础》 |
+| 4   | 《程序员修炼之道》           |
+
+---
+## 1.10 编程基础 + 工具
+
+1. 《Python Crash Course》第 3 版：零基础友好，项目驱动。官方页显示新版覆盖 Python 基础、pytest、Django 等内容。([nostarch.com](https://nostarch.com/python-crash-course-3rd-edition?utm_source=openai))
+2. 《Grokking Algorithms》第 2 版：算法入门，适合第一本算法书。([manning.com](https://www.manning.com/books/grokking-algorithms-second-edition?ar=false&lpse=B&utm_source=openai))
+3. 《The Pragmatic Programmer》20 周年版：程序员思维、习惯、工程素养。([pragprog.com](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/?utm_source=openai))
+
+---
+
+# 2. 前端路线大全集
+
+## 2.1 前端主线书单
+
+|阶段|书籍|
+|---|---|
+|HTML/CSS 入门|《Head First HTML与CSS》|
+|页面基础|《HTML & CSS设计与构建网站》|
+|CSS 进阶|《CSS揭秘》《CSS权威指南》|
+|JavaScript 入门进阶|《JavaScript高级程序设计》第4版|
+|JavaScript 深入|《JavaScript权威指南》第7版|
+|JS 底层|《你不知道的JavaScript》上中下|
+|JS 技巧|《JavaScript忍者秘籍》第2版|
+|TypeScript|《TypeScript编程》《Effective TypeScript》|
+|React|《React学习手册》《React设计原理》|
+|Vue|《Vue.js设计与实现》|
+|Node 补充|《深入浅出Node.js》《Node与Express开发》第2版|
+
+## 2.2 前端横向补充书单
+
+|能力|书籍|
+|---|---|
+|网络|《图解HTTP》《HTTP权威指南》《计算机网络：自顶向下方法》|
+|数据结构|《学习JavaScript数据结构与算法》|
+|性能|《Web性能权威指南》《Web前端性能优化》|
+|测试|《前端测试指南：策略与实践》|
+|工程化|《Webpack实战：入门、进阶与调优》|
+|安全|《白帽子讲Web安全》《Web安全深度剖析》|
+|设计|《写给大家看的设计书》《点石成金》|
+|后端接口|《Node与Express开发》《SQL必知必会》|
+
+## 2.3 Web 前端基础
+
+1. 《Learning Web Design》第 5 版：HTML、CSS、JavaScript、响应式网页。([oreilly.com](https://www.oreilly.com/library/view/learning-web-design/9781491960196/?utm_source=openai))
+2. 《Eloquent JavaScript》第 4 版：JavaScript 入门到中级，可在线读。([eloquent.javascript.ac.cn](https://eloquent.javascript.ac.cn/?utm_source=openai))
+3. 《CSS: The Definitive Guide》第 5 版：CSS 深入参考书。([oreilly.com](https://www.oreilly.com/library/view/css-the-definitive/9781098117603/?utm_source=openai))
+
+## 2.4 前端工程化
+
+1. 《JavaScript: The Definitive Guide》第 7 版：JS 权威进阶。([oreilly.com](https://www.oreilly.com/library/view/javascript-the-definitive/9781491952016/?utm_source=openai))
+2. 《Effective TypeScript》第 2 版：TypeScript 必读，适合从“会写”到“写得稳”。([effectivetypescript.com](https://effectivetypescript.com/?utm_source=openai))
+3. 《Learning React》第 2 版：React 入门到项目实践。([oreilly.com](https://www.oreilly.com/library/view/learning-react-2nd/9781492051718/?utm_source=openai))
+
+> 前端主线：**HTML/CSS → JavaScript → TypeScript → React/Vue/Next.js → 工程化、测试、性能优化**
+
+
+## 2.5 前端必须做的项目
+
+1. 个人主页
+2. Todo List
+3. 记账本
+4. 博客系统前端
+5. React/Vue 后台管理系统
+6. 电商前端：商品、购物车、订单
+7. PWA 离线应用
+8. 前端性能优化项目
+9. 前端自动化测试项目
+10. Web + App 共用接口的全栈项目
+
+## 2.6 前端调试和修 Bug 必练
+
+必须会用：
+
+- Chrome DevTools
+- Network 面板
+- Performance 面板
+- Lighthouse
+- React DevTools / Vue DevTools
+- Source Map
+- 断点调试
+- Console 调试
+- 接口 Mock
+- E2E 测试
+
+故意练这些 Bug：
+
+- 页面布局错位
+- 移动端适配失败
+- 接口跨域 CORS
+- 请求重复发送
+- 异步竞态问题
+- React 重复渲染
+- 内存泄漏
+- 首屏加载慢
+- XSS
+- CSRF
+
+---
+
+# 3. 后端路线大全集
+
+推荐主线：**Java + Spring Boot + MySQL + Redis + Linux + Docker/K8s**
+
+## 3.1 后端主线书单
+
+| 阶段          | 书籍                                  |
+| ----------- | ----------------------------------- |
+| Java 入门     | 《Java核心技术 卷I》                       |
+| Java 进阶     | 《Effective Java》第3版                 |
+| 并发          | 《Java并发编程实战》                        |
+| JVM         | 《深入理解Java虚拟机》第3版                    |
+| Spring      | 《Spring实战》第6版                       |
+| Spring Boot | 《Spring Boot实战》                     |
+| SQL         | 《SQL必知必会》                           |
+| MySQL 原理    | 《MySQL是怎样运行的》                       |
+| MySQL 优化    | 《高性能MySQL》第4版                       |
+| Redis       | 《Redis设计与实现》                        |
+| 网络          | 《计算机网络：自顶向下方法》《HTTP权威指南》            |
+| Linux       | 《鸟哥的Linux私房菜》《Linux命令行与Shell脚本编程大全》 |
+| 分布式         | 《数据密集型应用系统设计》                       |
+
+## 3.2 后端横向补充书单
+
+|能力|书籍|
+|---|---|
+|Go|《Go语言圣经》《Go语言实战》《Go语言设计与实现》|
+|Python|《Python编程：从入门到实践》《流畅的Python》|
+|Node.js|《深入浅出Node.js》《Node与Express开发》|
+|API 设计|《RESTful Web API设计》《持续API管理》|
+|架构|《企业应用架构模式》《架构整洁之道》|
+|DDD|《领域驱动设计》《实现领域驱动设计》|
+|微服务|《微服务设计》第2版、《微服务架构设计模式》|
+|消息队列|Kafka / RabbitMQ 中文实践书或官方文档|
+|DevOps|《Docker技术入门与实战》《Kubernetes in Action》|
+|CI/CD|《持续交付》|
+|监控|《Prometheus监控实战》|
+|可观测性|《可观测性工程》|
+|稳定性|《SRE：Google运维解密》|
+|性能|《性能之巅》《Java性能权威指南》|
+|安全|《Web安全深度剖析》《白帽子讲Web安全》|
+
+## 3.3 后端开发 + 数据库
+
+1. 《Learning SQL》第 3 版：SQL 必学。([oreilly.com](https://www.oreilly.com/library/view/learning-sql-3rd/9781492057604/?utm_source=openai))
+2. 后端语言任选一条先精通：
+    - Java 路线：《Effective Java》第 3 版 → 《Spring Start Here》→ 《Spring in Action》第 6 版。([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/effective-java/P200000000138?utm_source=openai)) ([manning.com](https://www.manning.com/books/spring-start-here?query=Lauren%C8%9Biu+Spilc%C4%83&utm_source=openai))
+    - Python 路线：《Fluent Python》第 2 版 → 《FastAPI》。([oreilly.com](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/?utm_source=openai)) ([oreilly.com](https://www.oreilly.com/library/view/fastapi/9781098135492/?utm_source=openai))
+    - Go 路线：《Learning Go》第 2 版。([oreilly.com](https://www.oreilly.com/library/view/learning-go-2nd/9781098139285/?utm_source=openai))
+    - Node.js 路线：《Node.js Design Patterns》第 4 版。([packtpub.com](https://www.packtpub.com/en-EC/product/nodejs-design-patterns-fourth-edition-9781803238944?utm_source=openai))
+3. 《API Design Patterns》：学 REST/API 设计。([manning.com](https://www.manning.com/books/api-design-patterns?a_aid=frankel&utm_source=openai))
+
+> 后端主线：**SQL → HTTP/API → 认证授权 → 缓存 → 队列 → 日志监控 → 部署**
+
+## 3.4 后端必须做的项目
+
+1. 用户注册登录 API
+2. JWT 鉴权系统
+3. RBAC 权限系统
+4. 博客系统后端
+5. 文件上传系统
+6. 电商后端：商品、库存、订单、支付模拟
+7. Redis 缓存系统
+8. 消息队列异步任务系统
+9. 秒杀系统简化版
+10. Docker 部署
+11. K8s 部署
+12. Prometheus + Grafana 监控
+13. 分布式链路追踪
+14. 高并发压测项目
+
+## 3.5 后端调试和修 Bug 必练
+
+必须会用：
+
+- IDE Debugger
+- curl / Postman / Apifox
+- SQL EXPLAIN
+- 慢查询日志
+- Java：jstack、jmap、JFR、VisualVM
+- Linux：top、ps、ss、lsof、strace、tcpdump
+- Docker logs
+- kubectl logs / describe
+- Prometheus / Grafana
+- OpenTelemetry / Jaeger
+
+故意练这些 Bug：
+
+- 慢 SQL
+- 索引失效
+- N+1 查询
+- 事务失效
+- 死锁
+- 缓存穿透、击穿、雪崩
+- 接口超时
+- 重试导致重复下单
+- 幂等失败
+- 内存泄漏
+- CPU 飙高
+- 线程池耗尽
+- 消息重复消费
+- 分布式锁失效
+
+---
+
+# 4. App 路线大全集
+
+App 分三条：
+
+```
+Android 原生：Kotlin + Android
+iOS 原生：Swift + SwiftUI/UIKit
+跨平台：Dart + Flutter
+```
+
+---
+
+## 4.1 Android 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Kotlin实战》|
+|2|Kotlin 官方中文文档|
+|3|《第一行代码 Android》第3版|
+|4|《Android编程权威指南》|
+|5|《Android开发艺术探索》|
+|6|《Android群英传：神兵利器》|
+|7|《Android应用性能优化》|
+|8|《腾讯Android自动化测试实战》|
+|9|《Android安全攻防权威指南》|
+
+必须会：
+
+- Activity / Fragment
+- 生命周期
+- ViewModel / LiveData / Flow
+- Jetpack Compose
+- Room
+- Retrofit
+- 协程
+- 权限
+- 后台任务
+- 性能优化
+- 打包签名
+
+---
+
+## 4.2 iOS 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Swift编程权威指南》|
+|2|Apple Swift 官方文档|
+|3|《iOS编程》Big Nerd Ranch 系列|
+|4|《iOS开发进阶》|
+|5|《SwiftUI极简开发》|
+|6|Apple Human Interface Guidelines|
+|7|《iOS应用逆向与安全》|
+
+必须会：
+
+- Swift
+- SwiftUI
+- UIKit 基础
+- ViewController 生命周期
+- Combine / async await
+- Core Data
+- URLSession
+- Instruments
+- App Store 打包发布
+
+---
+
+## 4.3 Flutter 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Dart语言实战：基于Flutter框架的程序开发》|
+|2|《Flutter实战》第2版|
+|3|《Flutter开发实战详解》|
+|4|《Flutter跨平台开发实战》|
+|5|Flutter 官方中文文档|
+
+必须会：
+
+- Dart 语法
+- Widget
+- 状态管理
+- 路由
+- 网络请求
+- 本地存储
+- 动画
+- 插件
+- Android/iOS 原生交互
+- 打包发布
+
+## 4.4 App 横向补充书单
+
+|能力|书籍|
+|---|---|
+|网络|《图解HTTP》《HTTP权威指南》《计算机网络：自顶向下方法》|
+|本地存储|SQLite / Room / Core Data 相关资料|
+|UI/UX|《写给大家看的设计书》《交互设计精髓》《点石成金》|
+|性能|《Android应用性能优化》《性能之巅》|
+|自动化测试|《腾讯Android自动化测试实战》《软件测试的艺术》|
+|安全|《Android安全攻防权威指南》《iOS应用逆向与安全》《图解密码技术》|
+|后端接口|《Spring实战》《Node与Express开发》《SQL必知必会》|
+|工程化|《Git权威指南》《持续交付》|
+
+## 4.5 App 端开发
+
+1. Android：
+    - 《Kotlin in Action》第 2 版
+    - 《Android Programming: The Big Nerd Ranch Guide》第 5 版([manning.com](https://www.manning.com/books/kotlin-in-action-second-edition?utm_source=openai)) ([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/android-programming-the-big-nerd-ranch-guide/P200000000538/9780137645916%3Fsrsltid%3DAfmBOorhPbhXKc4oCy_bWQbZudXs-BhqV-R0E_UJGiZfxm-iWVzbWcRB?utm_source=openai))
+2. iOS：
+    - Swift Apprentice: Fundamentals
+    - SwiftUI Apprentice  
+        Kodeco 的 Swift / SwiftUI 书单有较新的 Swift 6、iOS 18、Xcode 16 版本。([kodeco.com](https://www.kodeco.com/books?utm_source=openai))
+3. 跨平台 App：
+    - Dart Apprentice
+    - 《Flutter Apprentice》第 4 版([dart.dev](https://dart.dev/resources/books?utm_source=openai)) ([kodeco.com](https://www.kodeco.com/books/flutter-apprentice/v4.0?utm_source=openai))
+
+> 如果想快速做双端 App：先学 **Flutter**。  
+> 如果想找原生岗位：学 **Kotlin Android + Swift iOS**。
+
+
+## 4.6 App 调试和修 Bug 必练
+
+必须会用：
+
+- Android Studio Debugger
+- Logcat
+- Android Profiler
+- adb
+- LeakCanary
+- Xcode Debugger
+- LLDB
+- Instruments
+- Flutter DevTools
+- Crashlytics / Sentry
+
+故意练这些 Bug：
+
+- App 闪退
+- 生命周期异常
+- 页面旋转数据丢失
+- 网络弱网失败
+- Token 过期
+- 图片加载卡顿
+- 内存泄漏
+- 掉帧
+- 本地数据库升级失败
+- 权限申请失败
+- 后台任务被系统杀死
+- Flutter 状态错乱
+
+---
+
+# 5. 调试、测试、修 Bug 专门书单
+
+这一组非常重要，真实工作中天天用。
+
+| 阶段     | 书籍                         | 作用                                                                                                                                                         |
+| ------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Git/协作 | 《Pro Git》中文版 / 《Git权威指南》   | 学分支、提交、回滚、rebase、bisect 定位 Bug。参考：[Pro Git 中文版](https://progit-cn.github.io/)、[Git权威指南](https://book.douban.com/subject/6526452/)                          |
+| 调试方法   | 《调试九法：软硬件错误的排查之道》          | 专门讲“如何找 Bug 根因”，不是猜，是复现、观察、缩小范围。参考：[调试九法笔记](https://brainku.github.io/2016/12/11/debugging-the-9-rules/)                                                   |
+| 程序实践   | 《程序设计实践》                   | 讲排错、测试、性能、设计、可移植性。参考：[豆瓣](https://book.douban.com/subject/2111800/)                                                                                        |
+| 测试驱动   | 《测试驱动开发》或《测试驱动：开发入门、实战与进阶》 | 学会先写测试，再写实现，减少 Bug。参考：[TDD](https://book.douban.com/subject/1230036/)、[O’Reilly 北京](https://www.oreilly.com.cn/index.php?func=book&isbn=978-7-111-72423-0) |
+| 测试体系   | 《Google软件测试之道》             | 学大公司怎么做自动化测试、发布质量保障。参考：[豆瓣](https://book.douban.com/subject/25742200/)                                                                                     |
+| 改遗留代码  | 《修改代码的艺术》                  | 工作中很多 Bug 都在老代码里，这本教你安全改代码。参考：[博客来](https://www.books.com.tw/products/CN11126323)                                                                          |
+| 持续交付   | 《持续交付：发布可靠软件的系统方法》         | 学 CI/CD、自动化构建、自动化部署。参考：[博客来](https://www.books.com.tw/products/CN10806784)                                                                                 |
+| 线上排障   | 《SRE：Google运维解密》           | 学线上系统稳定性、报警、事故复盘。参考：[博客来](https://www.books.com.tw/products/CN11379620)                                                                                    |
+| 可观测性   | 《可观测性工程》                   | 学日志、指标、链路追踪，真实排查线上问题。参考：[博客来](https://www.books.com.tw/products/CN11896958)                                                                                |
+| 性能优化   | 《性能之巅》第2版                  | 系统级性能分析，CPU、内存、磁盘、网络。参考：[豆瓣](https://book.douban.com/subject/35934902/)                                                                                    |
+|        | 《代码整洁之道》                   | 减少 Bug                                                                                                                                                     |
+|        | 《重构：改善既有代码的设计》第2版          | 安全改代码                                                                                                                                                      |
+|        | 《持续交付》                     | 自动化测试、构建、发布                                                                                                                                                |
+|        | 《软件测试的艺术》                  | 测试思维                                                                                                                                                       |
+|        | 《软件调试的艺术》                  | GDB、断点、内存、线程调试                                                                                                                                             |
+
+修 Bug 标准流程：
+
+```
+1. 复现问题
+2. 记录环境
+3. 缩小范围
+4. 看日志/断点/抓包/数据库
+5. 建立最小复现
+6. 写失败测试
+7. 修复代码
+8. 回归测试
+9. 部署验证
+10. 写复盘
+```
+
+---
+
+# 6. 性能、上线、监控、运维书单
+
+|能力|书籍|
+|---|---|
+|系统性能|《性能之巅》第2版|
+|Web 性能|《Web性能权威指南》|
+|Java 性能|《Java性能权威指南》|
+|MySQL 性能|《高性能MySQL》第4版|
+|Linux 性能|《Linux性能优化实战》|
+|Docker|《Docker技术入门与实战》|
+|Kubernetes|《Kubernetes in Action》|
+|CI/CD|《持续交付》|
+|SRE|《SRE：Google运维解密》|
+|可观测性|《可观测性工程》|
+|监控|《Prometheus监控实战》|
+|稳定性|《发布！设计与部署稳定的分布式系统》|
+
+---
+
+# 7. 安全书单
+
+|方向|书籍|
+|---|---|
+|Web 安全|《白帽子讲Web安全》|
+|Web 攻防|《Web安全深度剖析》|
+|密码学|《图解密码技术》|
+|Android 安全|《Android安全攻防权威指南》|
+|iOS 安全|《iOS应用逆向与安全》|
+|软件安全|《代码审计：企业级Web代码安全架构》|
+
+必须懂：
+
+- XSS
+- CSRF
+- SQL 注入
+- SSRF
+- 文件上传漏洞
+- 权限绕过
+- JWT 安全
+- HTTPS
+- 加密、哈希、签名
+- App 反编译与加固基础
+
+---
+
+# 8. 架构、设计、分布式书单
+
+|顺序|书籍|
+|---|---|
+|1|《设计模式：可复用面向对象软件的基础》|
+|2|《重构：改善既有代码的设计》第2版|
+|3|《企业应用架构模式》|
+|4|《架构整洁之道》|
+|5|《领域驱动设计》|
+|6|《实现领域驱动设计》|
+|7|《微服务设计》第2版|
+|8|《微服务架构设计模式》|
+|9|《数据密集型应用系统设计》|
+|10|《分布式系统概念与设计》|
+
+---
+
+# 9. 主流语言横向补充书单
+
+|语言|入门/进阶书籍|主要用途|
+|---|---|---|
+|Python|《Python编程：从入门到实践》《流畅的Python》《Python Cookbook》|脚本、AI、后端、自动化|
+|JavaScript|《JavaScript高级程序设计》《JavaScript权威指南》《你不知道的JavaScript》|前端、Node|
+|TypeScript|《TypeScript编程》《Effective TypeScript》|现代前端、全栈|
+|Java|《Java核心技术》《Effective Java》《Java并发编程实战》|后端、企业开发|
+|Kotlin|《Kotlin实战》《Kotlin核心编程》|Android、JVM|
+|Go|《Go语言圣经》《Go语言实战》《Go语言设计与实现》|云原生、微服务|
+|Swift|《Swift编程权威指南》|iOS|
+|Dart|《Dart语言实战》《Flutter实战》|Flutter|
+|C|《C程序设计语言》《C和指针》《C陷阱与缺陷》|底层基础|
+|C++|《C++ Primer》《Effective C++》《深度探索C++对象模型》|系统、性能|
+|Rust|《Rust程序设计语言》《Rust权威指南》|安全系统编程|
+|C#|《C#图解教程》《C#本质论》|.NET、Unity|
+|PHP|《PHP和MySQL Web开发》《Laravel入门与实战》|Web、老系统|
+|Ruby|《Ruby基础教程》《Ruby元编程》|Rails、脚本|
+
+---
+# 10. 高级工程能力
+
+16. 《Refactoring》第 2 版：代码重构。([martinfowler.com](https://martinfowler.com/books/refactoring.html?utm_source=openai))
+17. 《Computer Systems: A Programmer’s Perspective》第 3 版：计算机系统、内存、进程、网络。([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/computer-systems-a-programmers-perspective/P200000003479/9780134154305?utm_source=openai))
+18. 《Designing Data-Intensive Applications》第 2 版：分布式系统、数据库、架构设计。([oreilly.com](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/?q_mailing_7U9L4FJsYdD2hpSWNp9DfLcUsdXApuPhSWDfP=Rp2Z8mmzbrmq8RQYf54Ad4TDwmvWVTV38CyeEUhUN1y9ThFLr3soKUx7Q&utm_source=openai))
+19. 《Docker: Up & Running》第 3 版 → 《Kubernetes: Up and Running》第 3 版。([oreilly.com](https://www.oreilly.com/library/view/docker-up/9781098131814/?utm_source=openai)) ([oreilly.com](https://www.oreilly.com/library/view/kubernetes-up-and/9781098110192/copyright-page01.html?utm_source=openai))
+20. 《Web Application Security》第 2 版：Web 安全。([oreilly.com](https://www.oreilly.com/library/view/web-application-security/9781098143923/?utm_source=openai))
+
+---
+
+# 11. 最终实战项目顺序
+
+建议按这个顺序练：
+
+1. 命令行 Todo 工具
+2. 静态个人主页
+3. JavaScript 记账本
+4. React/Vue Todo
+5. React/Vue 后台管理系统
+6. Spring Boot 用户系统
+7. MySQL 博客系统
+8. Redis 缓存项目
+9. 文件上传系统
+10. 电商系统：商品、购物车、订单、支付模拟
+11. Flutter App 调用后端接口
+12. Android 原生 App
+13. iOS 原生 App
+14. Web + App + 后端 + MySQL + Redis 全栈项目
+15. Docker 部署
+16. CI/CD 自动发布
+17. Prometheus + Grafana 监控
+18. 压测、性能优化、慢 SQL 优化
+19. 故障演练：接口超时、数据库死锁、缓存失效、App 崩溃
+20. 写技术文档和复盘报告
+
+---
+
+# 12. 你应该怎么练“修 Bug”
+
+每个项目都按这个流程练：
+
+1. **复现 Bug**：能稳定复现才好修。
+2. **记录环境**：系统、浏览器、App版本、接口参数、数据库状态。
+3. **缩小范围**：前端问题、后端问题、网络问题、数据库问题、缓存问题。
+4. **不要猜，要观察**：看日志、断点、请求、SQL、性能曲线。
+5. **最小复现**：把问题缩小成最小 demo。
+6. **一次只改一个地方**。
+7. **写测试锁住 Bug**：先写失败测试，再修复。
+8. **回归验证**：确认没引入新问题。
+9. **写复盘**：原因、修复、预防方式。
+
+
+---
+
+
+## 来源：`移动端/大全集 1.md`
+
+
+# 0. 总体路线图
+
+```
+共同基础底座
+  ↓
+前端路线 / 后端路线 / App路线
+  ↓
+调试、测试、性能、工程化、上线、监控
+  ↓
+架构、分布式、安全、源码阅读
+  ↓
+横向补语言：Go / Python / Java / Kotlin / Swift / Dart / C++ / Rust / C#
+```
+
+最重要的结论：
+
+- 想就业快：**前端 TypeScript + React/Vue + Java Spring Boot + SQL + Flutter**
+- 想后端强：**Java + Go + MySQL + Redis + Linux + 网络 + 分布式**
+- 想 App 强：**Kotlin Android + Swift iOS + Flutter**
+- 想长期精进：**数据结构、网络、操作系统、数据库、计算机系统、调试能力一定要补**
+
+---
+
+# 1. 共同基础底座书单
+
+## 1.1 编程入门
+
+|顺序|书籍|说明|
+|---|---|---|
+|1|《Python编程：从入门到实践》第3版|零基础入门，项目友好|
+|2|《C程序设计语言》|理解底层、内存、指针|
+|3|《程序设计实践》|编程风格、测试、调试、性能、工程实践|
+
+---
+
+## 1.2 Git、命令行、开发工具
+
+| 顺序  | 书籍                     |
+| --- | ---------------------- |
+| 1   | 《Pro Git》中文版           |
+| 2   | 《Git权威指南》              |
+| 3   | 《鸟哥的Linux私房菜：基础学习篇》    |
+| 4   | 《Linux命令行与Shell脚本编程大全》 |
+
+你必须会：
+
+- git clone / add / commit / branch / merge / rebase
+- git reset / revert / stash
+- git bisect 定位是哪次提交引入 Bug
+- Linux 文件、权限、进程、端口、日志查看
+
+---
+
+## 1.3 数学、逻辑、离散数学
+
+|顺序|书籍|作用|
+|---|---|---|
+|1|《程序员的数学》|二进制、逻辑、递归、排列组合|
+|2|《离散数学及其应用》|命题逻辑、集合、图、树、布尔代数|
+|3|《具体数学》|算法和复杂度进阶|
+
+---
+
+## 1.4 数据结构与算法
+
+|顺序|书籍|说明|
+|---|---|---|
+|1|《算法图解》|入门|
+|2|《大话数据结构》|中文友好|
+|3|《数据结构与算法分析：Java语言描述》|系统学习|
+|4|《算法》第4版|经典进阶|
+|5|《剑指Offer》|面试和实战题|
+|6|《算法导论》|高阶，后期读|
+
+必须掌握：
+
+- 数组、链表、栈、队列
+- 哈希表、堆、树、二叉搜索树、红黑树
+- 图、BFS、DFS、最短路径
+- 排序、查找、递归、动态规划
+- 时间复杂度、空间复杂度
+
+---
+
+## 1.5 逻辑电路、组成原理、计算机系统
+
+|顺序|书籍|
+|---|---|
+|1|《编码：隐匿在计算机软硬件背后的语言》第2版|
+|2|《计算机系统要素：从零开始构建现代计算机》|
+|3|《数字设计和计算机体系结构：RISC-V版》|
+|4|《计算机组成与设计：硬件/软件接口》|
+|5|《深入理解计算机系统》第3版|
+|6|《程序员的自我修养：链接、装载与库》|
+
+这一块解决：
+
+- CPU 是怎么执行程序的
+- 内存、缓存、寄存器是什么
+- 编译、链接、装载是怎么回事
+- 为什么会有栈溢出、内存泄漏、缓存命中率
+
+---
+
+## 1.6 操作系统
+
+| 顺序  | 书籍                 |
+| --- | ------------------ |
+| 1   | 《操作系统导论》           |
+| 2   | 《现代操作系统》           |
+| 3   | 《UNIX环境高级编程》       |
+| 4   | 《Linux/UNIX系统编程手册》 |
+
+必须会：
+
+- 进程、线程、协程
+- 锁、死锁、并发
+- 文件系统
+- 内存管理
+- IO、多路复用
+- Socket
+- Linux 排障命令
+
+---
+
+## 1.7 计算机网络
+
+|顺序|书籍|
+|---|---|
+|1|《图解HTTP》|
+|2|《HTTP权威指南》|
+|3|《计算机网络：自顶向下方法》第8版|
+|4|《TCP/IP详解 卷1》|
+|5|《Wireshark网络分析就这么简单》|
+
+必须会：
+
+- HTTP / HTTPS
+- DNS
+- TCP 三次握手、四次挥手
+- TCP 拥塞控制、重传、滑动窗口
+- WebSocket
+- CDN、缓存、代理
+- 抓包分析
+
+---
+
+## 1.8 数据库
+
+| 顺序  | 书籍            |
+| --- | ------------- |
+| 1   | 《SQL必知必会》     |
+| 2   | 《数据库系统概念》第7版  |
+| 3   | 《MySQL是怎样运行的》 |
+| 4   | 《高性能MySQL》第4版 |
+| 5   | 《Redis设计与实现》  |
+| 6   | 《数据密集型应用系统设计》 |
+
+必须会：
+
+- SQL 查询、JOIN、索引
+- 事务、隔离级别、锁
+- 慢 SQL 优化
+- MySQL 执行计划
+- Redis 缓存、过期、持久化
+- 分库分表、复制、分区、消息流
+
+---
+## 1.9 软件工程
+
+| 顺序  | 书籍                  |
+| --- | ------------------- |
+| 1   | 《代码整洁之道》            |
+| 2   | 《重构：改善既有代码的设计》第2版   |
+| 3   | 《设计模式：可复用面向对象软件的基础》 |
+| 4   | 《程序员修炼之道》           |
+
+---
+## 1.10 编程基础 + 工具
+
+1. 《Python Crash Course》第 3 版：零基础友好，项目驱动。官方页显示新版覆盖 Python 基础、pytest、Django 等内容。([nostarch.com](https://nostarch.com/python-crash-course-3rd-edition?utm_source=openai))
+2. 《Grokking Algorithms》第 2 版：算法入门，适合第一本算法书。([manning.com](https://www.manning.com/books/grokking-algorithms-second-edition?ar=false&lpse=B&utm_source=openai))
+3. 《The Pragmatic Programmer》20 周年版：程序员思维、习惯、工程素养。([pragprog.com](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/?utm_source=openai))
+
+---
+
+# 2. 前端路线大全集
+
+## 2.1 前端主线书单
+
+|阶段|书籍|
+|---|---|
+|HTML/CSS 入门|《Head First HTML与CSS》|
+|页面基础|《HTML & CSS设计与构建网站》|
+|CSS 进阶|《CSS揭秘》《CSS权威指南》|
+|JavaScript 入门进阶|《JavaScript高级程序设计》第4版|
+|JavaScript 深入|《JavaScript权威指南》第7版|
+|JS 底层|《你不知道的JavaScript》上中下|
+|JS 技巧|《JavaScript忍者秘籍》第2版|
+|TypeScript|《TypeScript编程》《Effective TypeScript》|
+|React|《React学习手册》《React设计原理》|
+|Vue|《Vue.js设计与实现》|
+|Node 补充|《深入浅出Node.js》《Node与Express开发》第2版|
+
+## 2.2 前端横向补充书单
+
+|能力|书籍|
+|---|---|
+|网络|《图解HTTP》《HTTP权威指南》《计算机网络：自顶向下方法》|
+|数据结构|《学习JavaScript数据结构与算法》|
+|性能|《Web性能权威指南》《Web前端性能优化》|
+|测试|《前端测试指南：策略与实践》|
+|工程化|《Webpack实战：入门、进阶与调优》|
+|安全|《白帽子讲Web安全》《Web安全深度剖析》|
+|设计|《写给大家看的设计书》《点石成金》|
+|后端接口|《Node与Express开发》《SQL必知必会》|
+
+## 2.3 Web 前端基础
+
+1. 《Learning Web Design》第 5 版：HTML、CSS、JavaScript、响应式网页。([oreilly.com](https://www.oreilly.com/library/view/learning-web-design/9781491960196/?utm_source=openai))
+2. 《Eloquent JavaScript》第 4 版：JavaScript 入门到中级，可在线读。([eloquent.javascript.ac.cn](https://eloquent.javascript.ac.cn/?utm_source=openai))
+3. 《CSS: The Definitive Guide》第 5 版：CSS 深入参考书。([oreilly.com](https://www.oreilly.com/library/view/css-the-definitive/9781098117603/?utm_source=openai))
+
+## 2.4 前端工程化
+
+1. 《JavaScript: The Definitive Guide》第 7 版：JS 权威进阶。([oreilly.com](https://www.oreilly.com/library/view/javascript-the-definitive/9781491952016/?utm_source=openai))
+2. 《Effective TypeScript》第 2 版：TypeScript 必读，适合从“会写”到“写得稳”。([effectivetypescript.com](https://effectivetypescript.com/?utm_source=openai))
+3. 《Learning React》第 2 版：React 入门到项目实践。([oreilly.com](https://www.oreilly.com/library/view/learning-react-2nd/9781492051718/?utm_source=openai))
+
+> 前端主线：**HTML/CSS → JavaScript → TypeScript → React/Vue/Next.js → 工程化、测试、性能优化**
+
+
+## 2.5 前端必须做的项目
+
+1. 个人主页
+2. Todo List
+3. 记账本
+4. 博客系统前端
+5. React/Vue 后台管理系统
+6. 电商前端：商品、购物车、订单
+7. PWA 离线应用
+8. 前端性能优化项目
+9. 前端自动化测试项目
+10. Web + App 共用接口的全栈项目
+
+## 2.6 前端调试和修 Bug 必练
+
+必须会用：
+
+- Chrome DevTools
+- Network 面板
+- Performance 面板
+- Lighthouse
+- React DevTools / Vue DevTools
+- Source Map
+- 断点调试
+- Console 调试
+- 接口 Mock
+- E2E 测试
+
+故意练这些 Bug：
+
+- 页面布局错位
+- 移动端适配失败
+- 接口跨域 CORS
+- 请求重复发送
+- 异步竞态问题
+- React 重复渲染
+- 内存泄漏
+- 首屏加载慢
+- XSS
+- CSRF
+
+---
+
+# 3. 后端路线大全集
+
+推荐主线：**Java + Spring Boot + MySQL + Redis + Linux + Docker/K8s**
+
+## 3.1 后端主线书单
+
+| 阶段          | 书籍                                  |
+| ----------- | ----------------------------------- |
+| Java 入门     | 《Java核心技术 卷I》                       |
+| Java 进阶     | 《Effective Java》第3版                 |
+| 并发          | 《Java并发编程实战》                        |
+| JVM         | 《深入理解Java虚拟机》第3版                    |
+| Spring      | 《Spring实战》第6版                       |
+| Spring Boot | 《Spring Boot实战》                     |
+| SQL         | 《SQL必知必会》                           |
+| MySQL 原理    | 《MySQL是怎样运行的》                       |
+| MySQL 优化    | 《高性能MySQL》第4版                       |
+| Redis       | 《Redis设计与实现》                        |
+| 网络          | 《计算机网络：自顶向下方法》《HTTP权威指南》            |
+| Linux       | 《鸟哥的Linux私房菜》《Linux命令行与Shell脚本编程大全》 |
+| 分布式         | 《数据密集型应用系统设计》                       |
+
+## 3.2 后端横向补充书单
+
+|能力|书籍|
+|---|---|
+|Go|《Go语言圣经》《Go语言实战》《Go语言设计与实现》|
+|Python|《Python编程：从入门到实践》《流畅的Python》|
+|Node.js|《深入浅出Node.js》《Node与Express开发》|
+|API 设计|《RESTful Web API设计》《持续API管理》|
+|架构|《企业应用架构模式》《架构整洁之道》|
+|DDD|《领域驱动设计》《实现领域驱动设计》|
+|微服务|《微服务设计》第2版、《微服务架构设计模式》|
+|消息队列|Kafka / RabbitMQ 中文实践书或官方文档|
+|DevOps|《Docker技术入门与实战》《Kubernetes in Action》|
+|CI/CD|《持续交付》|
+|监控|《Prometheus监控实战》|
+|可观测性|《可观测性工程》|
+|稳定性|《SRE：Google运维解密》|
+|性能|《性能之巅》《Java性能权威指南》|
+|安全|《Web安全深度剖析》《白帽子讲Web安全》|
+
+## 3.3 后端开发 + 数据库
+
+1. 《Learning SQL》第 3 版：SQL 必学。([oreilly.com](https://www.oreilly.com/library/view/learning-sql-3rd/9781492057604/?utm_source=openai))
+2. 后端语言任选一条先精通：
+    - Java 路线：《Effective Java》第 3 版 → 《Spring Start Here》→ 《Spring in Action》第 6 版。([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/effective-java/P200000000138?utm_source=openai)) ([manning.com](https://www.manning.com/books/spring-start-here?query=Lauren%C8%9Biu+Spilc%C4%83&utm_source=openai))
+    - Python 路线：《Fluent Python》第 2 版 → 《FastAPI》。([oreilly.com](https://www.oreilly.com/library/view/fluent-python-2nd/9781492056348/?utm_source=openai)) ([oreilly.com](https://www.oreilly.com/library/view/fastapi/9781098135492/?utm_source=openai))
+    - Go 路线：《Learning Go》第 2 版。([oreilly.com](https://www.oreilly.com/library/view/learning-go-2nd/9781098139285/?utm_source=openai))
+    - Node.js 路线：《Node.js Design Patterns》第 4 版。([packtpub.com](https://www.packtpub.com/en-EC/product/nodejs-design-patterns-fourth-edition-9781803238944?utm_source=openai))
+3. 《API Design Patterns》：学 REST/API 设计。([manning.com](https://www.manning.com/books/api-design-patterns?a_aid=frankel&utm_source=openai))
+
+> 后端主线：**SQL → HTTP/API → 认证授权 → 缓存 → 队列 → 日志监控 → 部署**
+
+## 3.4 后端必须做的项目
+
+1. 用户注册登录 API
+2. JWT 鉴权系统
+3. RBAC 权限系统
+4. 博客系统后端
+5. 文件上传系统
+6. 电商后端：商品、库存、订单、支付模拟
+7. Redis 缓存系统
+8. 消息队列异步任务系统
+9. 秒杀系统简化版
+10. Docker 部署
+11. K8s 部署
+12. Prometheus + Grafana 监控
+13. 分布式链路追踪
+14. 高并发压测项目
+
+## 3.5 后端调试和修 Bug 必练
+
+必须会用：
+
+- IDE Debugger
+- curl / Postman / Apifox
+- SQL EXPLAIN
+- 慢查询日志
+- Java：jstack、jmap、JFR、VisualVM
+- Linux：top、ps、ss、lsof、strace、tcpdump
+- Docker logs
+- kubectl logs / describe
+- Prometheus / Grafana
+- OpenTelemetry / Jaeger
+
+故意练这些 Bug：
+
+- 慢 SQL
+- 索引失效
+- N+1 查询
+- 事务失效
+- 死锁
+- 缓存穿透、击穿、雪崩
+- 接口超时
+- 重试导致重复下单
+- 幂等失败
+- 内存泄漏
+- CPU 飙高
+- 线程池耗尽
+- 消息重复消费
+- 分布式锁失效
+
+---
+
+# 4. App 路线大全集
+
+App 分三条：
+
+```
+Android 原生：Kotlin + Android
+iOS 原生：Swift + SwiftUI/UIKit
+跨平台：Dart + Flutter
+```
+
+---
+
+## 4.1 Android 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Kotlin实战》|
+|2|Kotlin 官方中文文档|
+|3|《第一行代码 Android》第3版|
+|4|《Android编程权威指南》|
+|5|《Android开发艺术探索》|
+|6|《Android群英传：神兵利器》|
+|7|《Android应用性能优化》|
+|8|《腾讯Android自动化测试实战》|
+|9|《Android安全攻防权威指南》|
+
+必须会：
+
+- Activity / Fragment
+- 生命周期
+- ViewModel / LiveData / Flow
+- Jetpack Compose
+- Room
+- Retrofit
+- 协程
+- 权限
+- 后台任务
+- 性能优化
+- 打包签名
+
+---
+
+## 4.2 iOS 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Swift编程权威指南》|
+|2|Apple Swift 官方文档|
+|3|《iOS编程》Big Nerd Ranch 系列|
+|4|《iOS开发进阶》|
+|5|《SwiftUI极简开发》|
+|6|Apple Human Interface Guidelines|
+|7|《iOS应用逆向与安全》|
+
+必须会：
+
+- Swift
+- SwiftUI
+- UIKit 基础
+- ViewController 生命周期
+- Combine / async await
+- Core Data
+- URLSession
+- Instruments
+- App Store 打包发布
+
+---
+
+## 4.3 Flutter 路线书单
+
+|顺序|书籍|
+|---|---|
+|1|《Dart语言实战：基于Flutter框架的程序开发》|
+|2|《Flutter实战》第2版|
+|3|《Flutter开发实战详解》|
+|4|《Flutter跨平台开发实战》|
+|5|Flutter 官方中文文档|
+
+必须会：
+
+- Dart 语法
+- Widget
+- 状态管理
+- 路由
+- 网络请求
+- 本地存储
+- 动画
+- 插件
+- Android/iOS 原生交互
+- 打包发布
+
+## 4.4 App 横向补充书单
+
+|能力|书籍|
+|---|---|
+|网络|《图解HTTP》《HTTP权威指南》《计算机网络：自顶向下方法》|
+|本地存储|SQLite / Room / Core Data 相关资料|
+|UI/UX|《写给大家看的设计书》《交互设计精髓》《点石成金》|
+|性能|《Android应用性能优化》《性能之巅》|
+|自动化测试|《腾讯Android自动化测试实战》《软件测试的艺术》|
+|安全|《Android安全攻防权威指南》《iOS应用逆向与安全》《图解密码技术》|
+|后端接口|《Spring实战》《Node与Express开发》《SQL必知必会》|
+|工程化|《Git权威指南》《持续交付》|
+
+## 4.5 App 端开发
+
+1. Android：
+    - 《Kotlin in Action》第 2 版
+    - 《Android Programming: The Big Nerd Ranch Guide》第 5 版([manning.com](https://www.manning.com/books/kotlin-in-action-second-edition?utm_source=openai)) ([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/android-programming-the-big-nerd-ranch-guide/P200000000538/9780137645916%3Fsrsltid%3DAfmBOorhPbhXKc4oCy_bWQbZudXs-BhqV-R0E_UJGiZfxm-iWVzbWcRB?utm_source=openai))
+2. iOS：
+    - Swift Apprentice: Fundamentals
+    - SwiftUI Apprentice  
+        Kodeco 的 Swift / SwiftUI 书单有较新的 Swift 6、iOS 18、Xcode 16 版本。([kodeco.com](https://www.kodeco.com/books?utm_source=openai))
+3. 跨平台 App：
+    - Dart Apprentice
+    - 《Flutter Apprentice》第 4 版([dart.dev](https://dart.dev/resources/books?utm_source=openai)) ([kodeco.com](https://www.kodeco.com/books/flutter-apprentice/v4.0?utm_source=openai))
+
+> 如果想快速做双端 App：先学 **Flutter**。  
+> 如果想找原生岗位：学 **Kotlin Android + Swift iOS**。
+
+
+## 4.6 App 调试和修 Bug 必练
+
+必须会用：
+
+- Android Studio Debugger
+- Logcat
+- Android Profiler
+- adb
+- LeakCanary
+- Xcode Debugger
+- LLDB
+- Instruments
+- Flutter DevTools
+- Crashlytics / Sentry
+
+故意练这些 Bug：
+
+- App 闪退
+- 生命周期异常
+- 页面旋转数据丢失
+- 网络弱网失败
+- Token 过期
+- 图片加载卡顿
+- 内存泄漏
+- 掉帧
+- 本地数据库升级失败
+- 权限申请失败
+- 后台任务被系统杀死
+- Flutter 状态错乱
+
+---
+
+# 5. 调试、测试、修 Bug 专门书单
+
+这一组非常重要，真实工作中天天用。
+
+| 阶段     | 书籍                         | 作用                                                                                                                                                         |
+| ------ | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Git/协作 | 《Pro Git》中文版 / 《Git权威指南》   | 学分支、提交、回滚、rebase、bisect 定位 Bug。参考：[Pro Git 中文版](https://progit-cn.github.io/)、[Git权威指南](https://book.douban.com/subject/6526452/)                          |
+| 调试方法   | 《调试九法：软硬件错误的排查之道》          | 专门讲“如何找 Bug 根因”，不是猜，是复现、观察、缩小范围。参考：[调试九法笔记](https://brainku.github.io/2016/12/11/debugging-the-9-rules/)                                                   |
+| 程序实践   | 《程序设计实践》                   | 讲排错、测试、性能、设计、可移植性。参考：[豆瓣](https://book.douban.com/subject/2111800/)                                                                                        |
+| 测试驱动   | 《测试驱动开发》或《测试驱动：开发入门、实战与进阶》 | 学会先写测试，再写实现，减少 Bug。参考：[TDD](https://book.douban.com/subject/1230036/)、[O’Reilly 北京](https://www.oreilly.com.cn/index.php?func=book&isbn=978-7-111-72423-0) |
+| 测试体系   | 《Google软件测试之道》             | 学大公司怎么做自动化测试、发布质量保障。参考：[豆瓣](https://book.douban.com/subject/25742200/)                                                                                     |
+| 改遗留代码  | 《修改代码的艺术》                  | 工作中很多 Bug 都在老代码里，这本教你安全改代码。参考：[博客来](https://www.books.com.tw/products/CN11126323)                                                                          |
+| 持续交付   | 《持续交付：发布可靠软件的系统方法》         | 学 CI/CD、自动化构建、自动化部署。参考：[博客来](https://www.books.com.tw/products/CN10806784)                                                                                 |
+| 线上排障   | 《SRE：Google运维解密》           | 学线上系统稳定性、报警、事故复盘。参考：[博客来](https://www.books.com.tw/products/CN11379620)                                                                                    |
+| 可观测性   | 《可观测性工程》                   | 学日志、指标、链路追踪，真实排查线上问题。参考：[博客来](https://www.books.com.tw/products/CN11896958)                                                                                |
+| 性能优化   | 《性能之巅》第2版                  | 系统级性能分析，CPU、内存、磁盘、网络。参考：[豆瓣](https://book.douban.com/subject/35934902/)                                                                                    |
+|        | 《代码整洁之道》                   | 减少 Bug                                                                                                                                                     |
+|        | 《重构：改善既有代码的设计》第2版          | 安全改代码                                                                                                                                                      |
+|        | 《持续交付》                     | 自动化测试、构建、发布                                                                                                                                                |
+|        | 《软件测试的艺术》                  | 测试思维                                                                                                                                                       |
+|        | 《软件调试的艺术》                  | GDB、断点、内存、线程调试                                                                                                                                             |
+
+修 Bug 标准流程：
+
+```
+1. 复现问题
+2. 记录环境
+3. 缩小范围
+4. 看日志/断点/抓包/数据库
+5. 建立最小复现
+6. 写失败测试
+7. 修复代码
+8. 回归测试
+9. 部署验证
+10. 写复盘
+```
+
+---
+
+# 6. 性能、上线、监控、运维书单
+
+|能力|书籍|
+|---|---|
+|系统性能|《性能之巅》第2版|
+|Web 性能|《Web性能权威指南》|
+|Java 性能|《Java性能权威指南》|
+|MySQL 性能|《高性能MySQL》第4版|
+|Linux 性能|《Linux性能优化实战》|
+|Docker|《Docker技术入门与实战》|
+|Kubernetes|《Kubernetes in Action》|
+|CI/CD|《持续交付》|
+|SRE|《SRE：Google运维解密》|
+|可观测性|《可观测性工程》|
+|监控|《Prometheus监控实战》|
+|稳定性|《发布！设计与部署稳定的分布式系统》|
+
+---
+
+# 7. 安全书单
+
+|方向|书籍|
+|---|---|
+|Web 安全|《白帽子讲Web安全》|
+|Web 攻防|《Web安全深度剖析》|
+|密码学|《图解密码技术》|
+|Android 安全|《Android安全攻防权威指南》|
+|iOS 安全|《iOS应用逆向与安全》|
+|软件安全|《代码审计：企业级Web代码安全架构》|
+
+必须懂：
+
+- XSS
+- CSRF
+- SQL 注入
+- SSRF
+- 文件上传漏洞
+- 权限绕过
+- JWT 安全
+- HTTPS
+- 加密、哈希、签名
+- App 反编译与加固基础
+
+---
+
+# 8. 架构、设计、分布式书单
+
+|顺序|书籍|
+|---|---|
+|1|《设计模式：可复用面向对象软件的基础》|
+|2|《重构：改善既有代码的设计》第2版|
+|3|《企业应用架构模式》|
+|4|《架构整洁之道》|
+|5|《领域驱动设计》|
+|6|《实现领域驱动设计》|
+|7|《微服务设计》第2版|
+|8|《微服务架构设计模式》|
+|9|《数据密集型应用系统设计》|
+|10|《分布式系统概念与设计》|
+
+---
+
+# 9. 主流语言横向补充书单
+
+|语言|入门/进阶书籍|主要用途|
+|---|---|---|
+|Python|《Python编程：从入门到实践》《流畅的Python》《Python Cookbook》|脚本、AI、后端、自动化|
+|JavaScript|《JavaScript高级程序设计》《JavaScript权威指南》《你不知道的JavaScript》|前端、Node|
+|TypeScript|《TypeScript编程》《Effective TypeScript》|现代前端、全栈|
+|Java|《Java核心技术》《Effective Java》《Java并发编程实战》|后端、企业开发|
+|Kotlin|《Kotlin实战》《Kotlin核心编程》|Android、JVM|
+|Go|《Go语言圣经》《Go语言实战》《Go语言设计与实现》|云原生、微服务|
+|Swift|《Swift编程权威指南》|iOS|
+|Dart|《Dart语言实战》《Flutter实战》|Flutter|
+|C|《C程序设计语言》《C和指针》《C陷阱与缺陷》|底层基础|
+|C++|《C++ Primer》《Effective C++》《深度探索C++对象模型》|系统、性能|
+|Rust|《Rust程序设计语言》《Rust权威指南》|安全系统编程|
+|C#|《C#图解教程》《C#本质论》|.NET、Unity|
+|PHP|《PHP和MySQL Web开发》《Laravel入门与实战》|Web、老系统|
+|Ruby|《Ruby基础教程》《Ruby元编程》|Rails、脚本|
+
+---
+# 10. 高级工程能力
+
+16. 《Refactoring》第 2 版：代码重构。([martinfowler.com](https://martinfowler.com/books/refactoring.html?utm_source=openai))
+17. 《Computer Systems: A Programmer’s Perspective》第 3 版：计算机系统、内存、进程、网络。([pearson.com](https://www.pearson.com/en-us/subject-catalog/p/computer-systems-a-programmers-perspective/P200000003479/9780134154305?utm_source=openai))
+18. 《Designing Data-Intensive Applications》第 2 版：分布式系统、数据库、架构设计。([oreilly.com](https://www.oreilly.com/library/view/designing-data-intensive-applications/9781098119058/?q_mailing_7U9L4FJsYdD2hpSWNp9DfLcUsdXApuPhSWDfP=Rp2Z8mmzbrmq8RQYf54Ad4TDwmvWVTV38CyeEUhUN1y9ThFLr3soKUx7Q&utm_source=openai))
+19. 《Docker: Up & Running》第 3 版 → 《Kubernetes: Up and Running》第 3 版。([oreilly.com](https://www.oreilly.com/library/view/docker-up/9781098131814/?utm_source=openai)) ([oreilly.com](https://www.oreilly.com/library/view/kubernetes-up-and/9781098110192/copyright-page01.html?utm_source=openai))
+20. 《Web Application Security》第 2 版：Web 安全。([oreilly.com](https://www.oreilly.com/library/view/web-application-security/9781098143923/?utm_source=openai))
+
+---
+
+# 11. 最终实战项目顺序
+
+建议按这个顺序练：
+
+1. 命令行 Todo 工具
+2. 静态个人主页
+3. JavaScript 记账本
+4. React/Vue Todo
+5. React/Vue 后台管理系统
+6. Spring Boot 用户系统
+7. MySQL 博客系统
+8. Redis 缓存项目
+9. 文件上传系统
+10. 电商系统：商品、购物车、订单、支付模拟
+11. Flutter App 调用后端接口
+12. Android 原生 App
+13. iOS 原生 App
+14. Web + App + 后端 + MySQL + Redis 全栈项目
+15. Docker 部署
+16. CI/CD 自动发布
+17. Prometheus + Grafana 监控
+18. 压测、性能优化、慢 SQL 优化
+19. 故障演练：接口超时、数据库死锁、缓存失效、App 崩溃
+20. 写技术文档和复盘报告
+
+---
+
+# 12. 你应该怎么练“修 Bug”
+
+每个项目都按这个流程练：
+
+1. **复现 Bug**：能稳定复现才好修。
+2. **记录环境**：系统、浏览器、App版本、接口参数、数据库状态。
+3. **缩小范围**：前端问题、后端问题、网络问题、数据库问题、缓存问题。
+4. **不要猜，要观察**：看日志、断点、请求、SQL、性能曲线。
+5. **最小复现**：把问题缩小成最小 demo。
+6. **一次只改一个地方**。
+7. **写测试锁住 Bug**：先写失败测试，再修复。
+8. **回归验证**：确认没引入新问题。
+9. **写复盘**：原因、修复、预防方式。
